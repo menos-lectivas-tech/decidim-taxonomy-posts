@@ -1,0 +1,7 @@
+es:
+  decidim:
+    taxonomy_posts:
+      posts:
+        index:
+          title: "Entradas de blog: %{taxonomy}"
+          empty: "No hay entradas de blog relacionadas con este elemento."

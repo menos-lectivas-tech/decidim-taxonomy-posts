@@ -1,0 +1,30 @@
+<% add_decidim_page_title(translated_attribute(taxonomy.name)) %>
+
+<div class="layout-main__section">
+  <p class="text-gray-2 text-sm"><%= translated_attribute(root_taxonomy.name) %></p>
+  <h1 class="h2"><%= t(".title", taxonomy: translated_attribute(taxonomy.name)) %></h1>
+
+  <% if posts.any? %>
+    <ul class="space-y-6 mt-6">
+      <% posts.each do |post| %>
+        <li>
+          <h2 class="h4">
+            <%= link_to translated_attribute(post.title), Decidim::ResourceLocatorPresenter.new(post).path %>
+          </h2>
+          <p class="text-sm text-gray-2">
+            <%= translated_attribute(post.participatory_space.title) %>
+            · <%= l(post.published_at.to_date, format: :long) %>
+          </p>
+          <!--<p><%= truncate(strip_tags(translated_attribute(post.body).to_s), length: 220) %></p>-->
+          <div class="editor-content">
+            <%= decidim_sanitize_editor_admin(translated_attribute(post.body)) %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= decidim_paginate posts %>
+  <% else %>
+    <p class="mt-6"><%= t(".empty") %></p>
+  <% end %>
+</div>

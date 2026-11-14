@@ -1,0 +1,7 @@
+en:
+  decidim:
+    taxonomy_posts:
+      posts:
+        index:
+          title: "Blog posts: %{taxonomy}"
+          empty: "There are no blog posts related to this item."
